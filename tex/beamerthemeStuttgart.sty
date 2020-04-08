@@ -72,16 +72,16 @@
 \DeclareStringOption[1]{thanksPageBigGraphicsScale}
 
 % graphics on the title page
-\DeclareStringOption[../gfx/logos/logo_us_white]{titlePageUniversityLogo}
-\DeclareStringOption[../gfx/logos/logo_ipvs]{titlePageInstituteLogo}
-\DeclareStringOption[../gfx/logos/logo_sgs]{titlePageDepartmentLogo}
-\DeclareStringOption[../gfx/logos/logo_simtech]{titlePageBigLogo}
+\DeclareStringOption[../gfx/logos/logo_us_white.png]{titlePageUniversityLogo}
+\DeclareStringOption[../gfx/logos/logo_scientific_comp.pdf]{titlePageInstituteLogo}
+\DeclareStringOption[../gfx/logos/logo_sgs.png]{titlePageDepartmentLogo}
+\DeclareStringOption[../gfx/logos/ipvslogo_rund_anthrazit.png]{titlePageBigLogo}
 
 % graphics on the thanks page
-\DeclareStringOption[../gfx/tikz/gfx_title]{thanksPageBigGraphics}
-\DeclareStringOption[../gfx/logos/logo_ipvs]{thanksPageInstituteLogo}
-\DeclareStringOption[../gfx/logos/logo_sgs]{thanksPageDepartmentLogo}
-\DeclareStringOption[../gfx/logos/logo_simtech]{thanksPageBigLogo}
+\DeclareStringOption[../gfx/tikz/gfx_title.png]{thanksPageBigGraphics}
+\DeclareStringOption[../gfx/logos/logo_scientific_comp.pdf]{thanksPageInstituteLogo}
+\DeclareStringOption[../gfx/logos/logo_sgs.png]{thanksPageDepartmentLogo}
+\DeclareStringOption[../gfx/logos/ipvslogo_rund_anthrazit.png]{thanksPageBigLogo}
 
 % process the options!
 \ProcessLocalKeyvalOptions*
@@ -228,17 +228,17 @@
     }
     \begin{textblock}{20}(10,45)
         \parbox[c][20mm]{20mm}{%
-            \centering\includegraphics[width=10mm]{\stuttgart@titlePageInstituteLogo}%
+            \centering\includegraphics[width=8mm]{\stuttgart@titlePageInstituteLogo}%
         }
     \end{textblock}
     \begin{textblock}{20}(25,50)
         \parbox[c][20mm]{20mm}{%
-            \centering\includegraphics[width=10mm]{\stuttgart@titlePageDepartmentLogo}%
+            \centering\includegraphics[width=8mm]{\stuttgart@titlePageDepartmentLogo}%
         }
     \end{textblock}
     \begin{textblock}{30}(15,60)
         \parbox[c][30mm]{30mm}{%
-            \centering\includegraphics[width=26mm]{\stuttgart@titlePageBigLogo}%
+            \centering\includegraphics[width=18mm]{\stuttgart@titlePageBigLogo}%
         }
     \end{textblock}
 }
@@ -518,17 +518,17 @@
     \end{textblock}
     \begin{textblock}{32}(5,25)
         \parbox[c][32mm]{32mm}{%
-            \centering\includegraphics[width=14mm]{\stuttgart@thanksPageInstituteLogo}%
+            \centering\includegraphics[width=10mm]{\stuttgart@thanksPageInstituteLogo}%
         }
     \end{textblock}
     \begin{textblock}{32}(25,35)
         \parbox[c][32mm]{32mm}{%
-            \centering\includegraphics[width=14mm]{\stuttgart@thanksPageDepartmentLogo}%
+            \centering\includegraphics[width=10mm]{\stuttgart@thanksPageDepartmentLogo}%
         }
     \end{textblock}
     \begin{textblock}{40}(15,50)
         \parbox[c][40mm]{40mm}{%
-            \centering\includegraphics[width=34mm]{\stuttgart@thanksPageBigLogo}%
+            \centering\includegraphics[width=20mm]{\stuttgart@thanksPageBigLogo}%
         }
     \end{textblock}
 }
