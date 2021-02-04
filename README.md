@@ -20,25 +20,19 @@ back your work using pull requests.
 
 ## Usage
 
-The directory `tex` contains L<sup>A</sup>T<sub>E</sub>X source code
-and resulting PDFs, while `gfx` contains graphics.
+The main directoy contains the main L<sup>A</sup>T<sub>E</sub>X
+and resulting PDFs.
+The additional directories contain the following files:
+  - `.logos` contains the logos for the title and thanks frame
+  - `content` contains the actual slide contents
+  - `listings` contains code snippets
+  - `figures` contains images/PDFs/... 
+  - `tikz` contains L<sup>A</sup>T<sub>E</sub>X figures 
+
 The main component of the template is the new Beamer theme "Stuttgart",
-located in `tex/beamerthemeStuttgart.sty`.
-Also included is an example presentation in `tex/talk.pdf`
-(L<sup>A</sup>T<sub>E</sub>X source in
-`tex/talk.tex` and `tex/slides.tex`).
+located in `beamerthemeStuttgart.sty`.
 
 ## Building
 
-On Ubuntu/Debian install package texlive-full. This package includes latexmk.
-To build the presentation, simply run the supplied Makefile.
+On Ubuntu/Debian install package texlive-full. 
 
-
-### PDFL<sup>A</sup>T<sub>E</sub>X
-
-Of course, you can also compile the example presentation in the
-traditional way using
-```
-cd tex
-pdflatex talk.tex
-```

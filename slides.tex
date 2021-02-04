@@ -1,0 +1,115 @@
+% !TeX spellcheck = en_US
+% !TeX encoding = utf8
+% !TeX program = lualatex
+
+\documentclass[compress,11pt,usernames, dvipsnames, aspectratio=169]{beamer}
+
+% language and encodings
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% TikZ
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows.meta, positioning, overlay-beamer-styles, decorations}
+
+% minted
+\usepackage{minted}
+\setminted{
+    linenos,%
+    tabsize=3,%
+}
+\newcommand{\cppinline}[1]{\mintinline[breaklines]{c++}{#1}}
+
+% SIunitx
+\usepackage[free-standing-units]{siunitx}
+\sisetup{
+    per-mode=symbol,%
+    binary-units=true,%
+}
+
+% misc
+\usepackage{appendixnumberbeamer}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{iftex}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{todonotes}
+\usepackage{xcolor}
+\usepackage{xspace}
+
+\newcommand{\cpp}[1][]{\texttt{C++#1}\xspace}
+\newcommand{\includeplot}[1]{%
+    \ifluatex
+        \resizebox{\textwidth}{!}{\input{#1.pgf}}
+    \else
+        \includegraphics[width=\textwidth]{#1.pdf}
+    \fi
+}
+
+\makeatletter
+\newcommand\changemode[1]{%
+	\gdef\beamer@currentmode{#1}}
+\makeatother
+
+
+% Beamer theme - options:
+% - navigationDotsLocation: specify location of the dots in the headline
+%   - near: display the dots near the section names (default)
+%   - below: display the dots below the section names
+% - titlePageSpacing: vertical spacing between items on title page (default: 1.5em)
+% - titlePageNumberOfAuthors: influence size and location of authors on title page
+%   - few (default): use larger font size, display authors on the left
+%   - many: use smaller font size, display authors on the right
+% - thanksPageBigGraphicsScale: scale for the big graphics on the thanks page (default: 1)
+% - titlePageUniversityLogo: location of university logo file on the title page
+%   (default: .logos/logo_us_white)
+% - titlePageInstituteLogo: location of institute logo file on the title page
+%   (default: .logos/logo_ipvs)
+% - titlePageDepartmentLogo: location of department logo file on the title page
+%   (default: .logos/logo_sgs)
+% - titlePageBigLogo: location of big logo file on the title page
+%   (default: .logos/logo_simtech)
+% - thanksPageBigGraphics: location of the big graphics on the thanks page
+%   (default: .tikz/gfx_title)
+% - thanksPageInstituteLogo: location of institute logo file on the thanks page
+%   (default: .logos/logo_ipvs)
+% - thanksPageDepartmentLogo: location of department logo file on the thanks page
+%   (default: .logos/logo_sgs)
+% - thanksPageBigLogo: location of big logo file on the thanks page
+%   (default: .logos/logo_simtech)
+
+\usetheme[
+%    thanksPageBigGraphics=.logos/placeholder,%
+    navigationDotsLocation=below,%
+]{Stuttgart}
+
+% metadata
+% TODO: customize
+\title{Title}
+\subtitle{Subtitle}
+\author{Author}
+\institute{University of Stuttgart, IPVS, SGS/SC}
+\date{Date}
+
+\begin{document}
+    
+    % TITLE + TABLE OF CONTENTS
+    \only<beamer>{\titleframe}
+    \begin{frame}{Overview}
+        \tableofcontents
+    \end{frame}
+
+    % CONTENT
+    \input{content/content}
+    % TODO: add content
+
+    % THANKS + APPENDIX
+    \thanksframe
+    \appendix
+    \IfFileExists{content/appendix.tex}{
+        \input{content/appendix}
+    }{}
+
+\end{document}

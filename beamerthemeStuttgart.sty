@@ -45,6 +45,19 @@
 % OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 % SOFTWARE.
 
+% see: https://tex.stackexchange.com/questions/234269/hide-some-slides-from-the-miniframes-navigation-in-beamer
+\let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry
+\def\beamer@writeslidentry@miniframesoff{%
+	\expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
+	{%else
+		% removed \addtocontents commands
+		\clearpage\beamer@notesactions%
+	}
+}
+\newcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
+\newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
+
+
 % ------------------------------------------------------------------------------
 % processing of options
 \RequirePackage{kvoptions}
@@ -72,16 +85,16 @@
 \DeclareStringOption[1]{thanksPageBigGraphicsScale}
 
 % graphics on the title page
-\DeclareStringOption[../gfx/logos/logo_us_white.png]{titlePageUniversityLogo}
-\DeclareStringOption[../gfx/logos/logo_scientific_comp.pdf]{titlePageInstituteLogo}
-\DeclareStringOption[../gfx/logos/logo_sgs.png]{titlePageDepartmentLogo}
-\DeclareStringOption[../gfx/logos/ipvslogo_rund_anthrazit.png]{titlePageBigLogo}
+\DeclareStringOption[.logos/logo_us_white.png]{titlePageUniversityLogo}
+\DeclareStringOption[.logos/logo_scientific_comp.pdf]{titlePageInstituteLogo}
+\DeclareStringOption[.logos/logo_sgs.png]{titlePageDepartmentLogo}
+\DeclareStringOption[.logos/ipvslogo_rund_anthrazit.png]{titlePageBigLogo}
 
 % graphics on the thanks page
-\DeclareStringOption[../gfx/tikz/gfx_title.png]{thanksPageBigGraphics}
-\DeclareStringOption[../gfx/logos/logo_scientific_comp.pdf]{thanksPageInstituteLogo}
-\DeclareStringOption[../gfx/logos/logo_sgs.png]{thanksPageDepartmentLogo}
-\DeclareStringOption[../gfx/logos/ipvslogo_rund_anthrazit.png]{thanksPageBigLogo}
+\DeclareStringOption[.logos/placeholder.pdf]{thanksPageBigGraphics}
+\DeclareStringOption[.logos/logo_scientific_comp.pdf]{thanksPageInstituteLogo}
+\DeclareStringOption[.logos/logo_sgs.png]{thanksPageDepartmentLogo}
+\DeclareStringOption[.logos/ipvslogo_rund_anthrazit.png]{thanksPageBigLogo}
 
 % process the options!
 \ProcessLocalKeyvalOptions*
@@ -258,6 +271,7 @@
 \newcommand*{\sectionframe}[1]{
     \section*{}
     {%
+        \miniframesoff
         \setbeamertemplate{headline}{}
         \setbeamertemplate{footline}{}
         \begin{frame}[noframenumbering]
@@ -273,6 +287,7 @@
                 {\usebeamerfont{title}\LARGE\color{anthrazit}#1\par}
             \end{textblock}
         \end{frame}
+        \miniframeson
     }%
 }
 
@@ -535,11 +550,13 @@
 \newcommand*{\thanksframe}{%
     \section*{}%
     {%
+        \miniframesoff
         \setbeamertemplate{headline}{}
         \setbeamertemplate{footline}{}
         \begin{frame}[noframenumbering]
             \usebeamertemplate*{thanks page}
         \end{frame}
+        \miniframeson
     }%
 }
 
